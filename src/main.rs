@@ -11,10 +11,12 @@ use codeunits::{
     camera::CameraPlugin,
     config::ConfigPlugin,
     input::InputPlugin,
+    mouse::MousePlugin,
 };
 
 mod types;
 use types::{
+    toolbox::ToolboxPlugin,
     floor::FloorPlugin,
     wall::WallPlugin,
 };
@@ -49,8 +51,8 @@ fn main() {
             })
         )
         .add_plugins((
-            CameraPlugin, ConfigPlugin, InputPlugin,
-            FloorPlugin, WallPlugin, // EnemyPlugin,
+            CameraPlugin, ConfigPlugin, InputPlugin, MousePlugin,
+            FloorPlugin, WallPlugin, ToolboxPlugin,
             SpriteSheetPlugin,
         ))
         .run();

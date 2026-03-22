@@ -30,6 +30,6 @@ impl Default for Config {
 pub struct ConfigPlugin;
 impl Plugin for ConfigPlugin {
     fn build(&self, app: &mut App) {
-        app.insert_resource(Config::new(2.));
+        app.insert_resource(Config::new(1.));
     }
 }

@@ -52,6 +52,32 @@ fn spawn_wall(
             ));
         };
     };
+
+
+
+
+    // commands.spawn((
+    //     Sprite {
+    //         color: Color::srgba(0.0, 1.0, 0.0, 0.15), // Gul, 30% opacity
+    //         custom_size: Some(Vec2::new(
+    //             Config::BASE_SIZE as f32,
+    //             Config::BASE_SIZE as f32,
+    //         )),
+    //         ..default()
+    //     },
+    //     Transform::from_xyz(
+    //         config.scaled_size() * 11 as f32,
+    //         -(config.scaled_size() * 2 as f32),
+    //         300.
+    //     ).with_scale(Vec3::new(
+    //         config.scale,
+    //         config.scale,
+    //         0.)
+    //     ),
+    // ));
+
+
+
 }
 
 #[derive(Copy, Clone)]
