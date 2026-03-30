@@ -1,10 +1,5 @@
-use bevy::{
-    prelude::*,
-    render::{
-        RenderPlugin,
-        settings::{Backends, RenderCreation, WgpuSettings}
-    },
-};
+mod spritesheet;
+use spritesheet::spritesheet::SpriteSheetPlugin;
 
 mod camera;
 use camera::camera::CameraPlugin;
@@ -12,11 +7,20 @@ use camera::camera::CameraPlugin;
 mod system;
 use system::config::ConfigPlugin;
 
-mod spritesheet;
-use spritesheet::spritesheet::SpriteSheetPlugin;
-
 mod tile;
 use tile::tile::TilePlugin;
+
+use bevy::{
+    prelude::*,
+    render::{
+        RenderPlugin,
+        settings::{
+            Backends, 
+            WgpuSettings,
+            RenderCreation, 
+        },
+    },
+};
 
 fn main() {
     App::new()
