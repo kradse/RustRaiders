@@ -1,4 +1,8 @@
-struct Floor {
+use bevy::prelude::*;
+use crate::spritesheet::spritesheet::SpriteKind;
+
+#[derive(Component)]
+pub struct Floor {
     kind: FloorKind,
 }
 
@@ -16,4 +20,12 @@ impl Floor {
 pub enum FloorKind {
     Dirt,
     Gravel,
+}
+impl FloorKind {
+    pub fn sprite_kind(kind: FloorKind) -> SpriteKind {
+        match kind {
+            FloorKind::Dirt => SpriteKind::FloorDirt,
+            FloorKind::Gravel => SpriteKind::FloorGravel,
+        }
+    }
 }

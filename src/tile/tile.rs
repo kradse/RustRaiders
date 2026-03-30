@@ -3,6 +3,7 @@ use bevy::math::IVec2;
 
 use crate::spritesheet::spritesheet::SpriteSheet;
 use crate::system::config::Config;
+use crate::tile::floor::{Floor, FloorKind};
 
 #[derive(Component)]
 struct Tile {
@@ -33,9 +34,10 @@ fn spawn_tile(
         for x in 0..3 {
             commands.spawn((
                 Tile::from_xy(x, y),
+                Floor::from_kind(FloorKind::Dirt),
                 Sprite::from_atlas_image(
                     sprite_sheet.get_handle_image(),
-                    sprite_sheet.get_sprite(sprite_sheet.floors.dirt),
+                    sprite_sheet.get_sprite(FloorKind::sprite_kind(FloorKind::Dirt)),
                 ),
                 Transform::from_xyz(
                     x_pos(&config, &x), 
