@@ -1,9 +1,9 @@
 use bevy::prelude::*;
 
 use crate::{
-    codeunits::config::Config, 
+    codeunits::config::Config,
     uis::{
-        sprite_kind::SpriteKind, 
+        sprite_kind::SpriteKind,
         sprite_sheet::SpriteSheet,
     }
 };
@@ -11,6 +11,12 @@ use crate::{
 #[derive(Component)]
 pub struct Wall {
     kind: WallKind
+}
+
+#[derive(Component, Clone, Copy)]
+pub struct GridPosition {
+    pub x: i32,
+    pub y: i32,
 }
 
 impl Wall {
@@ -36,6 +42,7 @@ fn spawn_wall(
             let wall_kind = WallKind::Rock;
             commands.spawn((
                 Wall::from_kind(wall_kind),
+                GridPosition { x: x as i32, y: -(y as i32) },
                 Sprite::from_atlas_image(
                     sprite_sheet.get_handle_image(),
                     sprite_sheet.get_sprite(wall_kind.to_sprite_kind())

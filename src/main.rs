@@ -6,25 +6,17 @@ use bevy::{
     },
 };
 
-mod codeunits;
-use codeunits::{
-    camera::CameraPlugin,
-    config::ConfigPlugin,
-    input::InputPlugin,
-    mouse::MousePlugin,
-};
+mod camera;
+use camera::camera::CameraPlugin;
 
-mod types;
-use types::{
-    toolbox::ToolboxPlugin,
-    floor::FloorPlugin,
-    wall::WallPlugin,
-};
+mod system;
+use system::config::ConfigPlugin;
 
-mod uis;
-use uis::{
-    sprite_sheet::SpriteSheetPlugin,
-};
+mod spritesheet;
+use spritesheet::spritesheet::SpriteSheetPlugin;
+
+mod tile;
+use tile::tile::TilePlugin;
 
 fn main() {
     App::new()
@@ -33,8 +25,8 @@ fn main() {
             .set(WindowPlugin {
                 primary_window: Some(Window {
                     title: "Rust Raiders".into(),
-                    // resolution: (640, 360).into(), // Native resolution (16:9)
-                    resolution: (1280, 720).into(), // 720p (16:9)
+                    resolution: (480, 360).into(), // Native resolution (4:3)
+                    // resolution: (1280, 720).into(), // 720p (16:9)
                     // resolution: (1920, 1080).into(), // 1080p (16:9)
                     // resolution: (2560, 1440).into(), // 1440p (16:9)
                     resizable: false,
@@ -51,8 +43,9 @@ fn main() {
             })
         )
         .add_plugins((
-            CameraPlugin, ConfigPlugin, InputPlugin, MousePlugin,
-            FloorPlugin, WallPlugin, ToolboxPlugin,
+            TilePlugin,
+            ConfigPlugin,
+            CameraPlugin,
             SpriteSheetPlugin,
         ))
         .run();
